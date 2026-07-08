@@ -21,6 +21,7 @@ import getHardwareInventory from '@salesforce/apex/HardwareController.getHardwar
 import updateRequestStatus from '@salesforce/apex/HardwareController.updateRequestStatus';
 import getHardwareTickets from '@salesforce/apex/HardwareController.getHardwareTickets';
 import updateTicketStatus from '@salesforce/apex/HardwareController.updateTicketStatus';
+import createHardwareRequest from '@salesforce/apex/HardwareController.createHardwareRequest';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
 import LightningConfirm from 'lightning/confirm';
@@ -89,6 +90,26 @@ export default class LeaveHRDashboard extends LightningElement {
     @track escalatedTickets = [];
     @track solvedRequests = [];
     @track solvedTickets = [];
+
+    // HR Hardware Request Modal State
+    @track isHRHardwareRequestModalOpen = false;
+    @track hrHardwareSelectedEmployee;
+    @track hrHardwareSelectedType;
+    @track hrHardwareSelectedDescription = '';
+
+    hrHardwareTypeOptions = [
+        { label: 'Laptop', value: 'Laptop' },
+        { label: 'Monitor', value: 'Monitor' },
+        { label: 'Keyboard', value: 'Keyboard' },
+        { label: 'Mouse', value: 'Mouse' },
+        { label: 'Headset', value: 'Headset' },
+        { label: 'UPS', value: 'UPS' },
+        { label: 'CPU', value: 'CPU' },
+        { label: 'RAM', value: 'RAM' },
+        { label: 'SSD', value: 'SSD' },
+        { label: 'Graphic Card', value: 'Graphic Card' },
+        { label: 'Network Hardware', value: 'Network Hardware' }
+    ];
 
     // Hardware Report State
     @track hardwareData = [];
@@ -1343,6 +1364,53 @@ export default class LeaveHRDashboard extends LightningElement {
         } catch (e) {
             console.error('Export Error:', e);
             this.showToast('Error', 'Failed to download report: ' + e.message, 'error');
+        }
+    }
+
+    // --- HR NEW HARDWARE REQUEST MODAL METHODS ---
+    openHRHwRequestModal() {
+        this.hrHardwareSelectedEmployee = undefined;
+        this.hrHardwareSelectedType = undefined;
+        this.hrHardwareSelectedDescription = '';
+        this.isHRHardwareRequestModalOpen = true;
+    }
+
+    closeHRHwRequestModal() {
+        this.isHRHardwareRequestModalOpen = false;
+    }
+
+    handleHRHwEmployeeChange(event) {
+        this.hrHardwareSelectedEmployee = event.detail.value;
+    }
+
+    handleHRHwTypeChange(event) {
+        this.hrHardwareSelectedType = event.detail.value;
+    }
+
+    handleHRHwDescriptionChange(event) {
+        this.hrHardwareSelectedDescription = event.target.value;
+    }
+
+    get isHRHwSubmitDisabled() {
+        return !this.hrHardwareSelectedEmployee || !this.hrHardwareSelectedType || !this.hrHardwareSelectedDescription;
+    }
+
+    async submitHRHwRequest() {
+        this.isLoading = true;
+        try {
+            await createHardwareRequest({
+                contactId: this.hrHardwareSelectedEmployee,
+                hardwareType: this.hrHardwareSelectedType,
+                description: this.hrHardwareSelectedDescription
+            });
+            this.showToast('Success', 'Hardware request submitted successfully.', 'success');
+            this.closeHRHwRequestModal();
+            this.loadEscalatedRequests(); // Refresh hardware list
+        } catch (error) {
+            console.error('Error submitting hardware request:', error);
+            this.showToast('Error', 'Failed to submit hardware request: ' + (error.body ? error.body.message : error.message), 'error');
+        } finally {
+            this.isLoading = false;
         }
     }
 }
