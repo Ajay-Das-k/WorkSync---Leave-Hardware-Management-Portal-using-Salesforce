@@ -83,7 +83,7 @@ To test the application locally or inside your staging environment, use the virt
 | :--- | :--- | :--- | :--- |
 | **HR Admin** | `CT50` | `Welcome@HR50` | Remya Nair |
 | **Manager** | `CT01` | `Welcome@Manager01` | Harish Kumar |
-| **Employee** | `CT100` | `WELCOME@CRMantra12` | normal Employee |
+| **Employee** | `CT432` | `WELCOME@CRMantra12` | normal Employee a |
 | **System Admin (TSA)** | `CT101` | `WELCOME@CRMantra12` | system Admin |
 
 ---
