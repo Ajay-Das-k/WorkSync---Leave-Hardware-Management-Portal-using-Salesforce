@@ -4,7 +4,10 @@ import resetPassword from '@salesforce/apex/PaybookLoginController.resetPassword
 import generateResetOTP from '@salesforce/apex/PaybookLoginController.generateResetOTP';
 import registerEmployee from '@salesforce/apex/PaybookSignupController.registerEmployee';
 import changeDefaultPassword from '@salesforce/apex/PaybookLoginController.changeDefaultPassword';
+import CompanyLogo from '@salesforce/resourceUrl/CompanyLogo';
+
 export default class PaybookLogin extends LightningElement {
+    companyLogoUrl = CompanyLogo;
     // ... existing props ...
 
     // ========== FORGOT PASSWORD HANDLERS ==========
