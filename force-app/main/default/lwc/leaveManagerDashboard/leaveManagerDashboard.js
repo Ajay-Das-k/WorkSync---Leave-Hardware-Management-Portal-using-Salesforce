@@ -1010,6 +1010,12 @@ export default class LeaveManagerDashboard extends LightningElement {
                     employeeDepartment: r.Employee__r ? r.Employee__r.Department__c : 'N/A',
                     employeePosition: r.Employee__r ? r.Employee__r.Position__c : 'N/A'
                 }));
+                this.solvedRequests = result.filter(r => r.Status__c === 'Approved' || r.Status__c === 'Rejected' || r.Status__c === 'Fulfilled').map(r => ({
+                    ...r,
+                    formattedDate: new Date(r.CreatedDate).toLocaleDateString(),
+                    isDeliverable: r.Status__c === 'Approved',
+                    employeeName: r.Employee__r ? r.Employee__r.Name : 'Deleted Employee'
+                }));
             })
             .catch(error => {
                 console.error('Error fetching hardware requests:', error);
@@ -1029,10 +1035,33 @@ export default class LeaveManagerDashboard extends LightningElement {
                     hardwareName: t.Hardware__r ? t.Hardware__r.Name : 'Deleted Hardware',
                     employeeName: t.Employee__r ? t.Employee__r.Name : 'Deleted Employee'
                 }));
+                this.solvedTickets = result.filter(t => t.Status__c === 'Solved by Admin' || t.Status__c === 'Solved by HR/Manager' || t.Status__c === 'Hardware will be Delivered').map(t => ({
+                    ...t,
+                    formattedDate: new Date(t.CreatedDate).toLocaleDateString(),
+                    hardwareName: t.Hardware__r ? t.Hardware__r.Name : 'Deleted Hardware',
+                    employeeName: t.Employee__r ? t.Employee__r.Name : 'Deleted Employee'
+                }));
             })
             .catch(error => {
                 console.error('Error fetching hardware tickets:', error);
             });
+    }
+
+    async handleDeliverRequest(event) {
+        const reqId = event.target.dataset.id;
+        try {
+            await updateRequestStatus({ 
+                requestId: reqId, 
+                newStatus: 'Fulfilled', 
+                comment: 'Hardware delivered by Manager', 
+                role: 'HRManager',
+                callerId: this.currentUser.contactId
+            });
+            this.showToast('Success', 'Hardware marked as Delivered.', 'success');
+            this.loadEscalatedRequests();
+        } catch (error) {
+            this.showToast('Error', error.body ? error.body.message : error.message, 'error');
+        }
     }
 
     openRequestModal(event) {

@@ -552,6 +552,80 @@
                         </div>
                     </lightning-tab>
 
+                    <!-- INNER TAB: Solved Requests & Tickets -->
+                    <lightning-tab label="Solved Requests & Tickets">
+                        <div class="section-container slds-m-top_medium">
+                            <!-- Solved Requests Section -->
+                            <div class="slds-m-bottom_large">
+                                <h2 class="section-title slds-m-bottom_medium">Solved Requests</h2>
+                                <template if:false={hasSolvedRequests}>
+                                    <div class="slds-text-align_center slds-p-around_medium slds-text-color_weak" style="border: 1px dashed #ccc; border-radius: 8px;">
+                                        No solved hardware requests.
+                                    </div>
+                                </template>
+                                <template if:true={hasSolvedRequests}>
+                                    <div class="slds-grid slds-wrap slds-gutters">
+                                        <template for:each={solvedRequests} for:item="req">
+                                            <div key={req.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-m-bottom_medium">
+                                                <div class="slds-box slds-box_x-small" style="background:#f4f6f9; border-radius:8px; border-left: 4px solid #10b981;">
+                                                    <div class="slds-grid slds-grid_align-spread">
+                                                        <strong>{req.Hardware_Type__c}</strong>
+                                                        <span class="slds-badge slds-theme_success">{req.Status__c}</span>
+                                                    </div>
+                                                    <div class="slds-m-top_small">
+                                                         <p><strong>Employee:</strong> {req.employeeName}</p>
+                                                         <p><strong>Date:</strong> {req.formattedDate}</p>
+                                                        <template if:true={req.Admin_Comment__c}>
+                                                            <p><strong>Admin Comment:</strong> {req.Admin_Comment__c}</p>
+                                                        </template>
+                                                        <template if:true={req.HR_Manager_Comment__c}>
+                                                            <p><strong>HR/Manager Comment:</strong> {req.HR_Manager_Comment__c}</p>
+                                                        </template>
+                                                        <p class="slds-m-top_x-small"><strong>Description:</strong><br/>{req.Description__c}</p>
+                                                    </div>
+                                                    <template if:true={req.isDeliverable}>
+                                                        <div class="slds-m-top_medium slds-grid slds-grid_align-end">
+                                                            <lightning-button label="Deliver" variant="brand" onclick={handleDeliverRequest} data-id={req.Id}></lightning-button>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <!-- Solved Tickets Section -->
+                            <div>
+                                <h2 class="section-title slds-m-bottom_medium">Solved Tickets</h2>
+                                <template if:false={hasSolvedTickets}>
+                                    <div class="slds-text-align_center slds-p-around_medium slds-text-color_weak" style="border: 1px dashed #ccc; border-radius: 8px;">
+                                        No solved hardware tickets.
+                                    </div>
+                                </template>
+                                <template if:true={hasSolvedTickets}>
+                                    <div class="slds-grid slds-wrap slds-gutters">
+                                        <template for:each={solvedTickets} for:item="ticket">
+                                            <div key={ticket.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-m-bottom_medium">
+                                                <div class="slds-box slds-box_x-small" style="background:#f4f6f9; border-radius:8px; border-left: 4px solid #10b981;">
+                                                    <div class="slds-grid slds-grid_align-spread">
+                                                        <strong>{ticket.Name} - {ticket.hardwareName}</strong>
+                                                        <span class="slds-badge slds-theme_success">{ticket.Status__c}</span>
+                                                    </div>
+                                                    <div class="slds-m-top_small">
+                                                        <p><strong>Employee:</strong> {ticket.employeeName}</p>
+                                                        <p><strong>Date:</strong> {ticket.formattedDate}</p>
+                                                        <p class="slds-m-top_x-small"><strong>Notes / Details:</strong><br/>{ticket.Notes__c}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </lightning-tab>
+
                     <!-- INNER TAB C: Hardware Report -->
                     <lightning-tab label="Hardware Report" value="hardware_report" onactive={loadHardwareReport}>
                         <div class="section-container slds-m-top_medium">
