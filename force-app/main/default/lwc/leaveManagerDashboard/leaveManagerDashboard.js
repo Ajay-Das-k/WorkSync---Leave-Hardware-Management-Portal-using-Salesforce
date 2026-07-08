@@ -68,6 +68,8 @@ export default class LeaveManagerDashboard extends LightningElement {
     // Hardware Management State
     @track escalatedRequests = [];
     @track escalatedTickets = [];
+    @track solvedRequests = [];
+    @track solvedTickets = [];
     
     // Hardware Report State
     @track hardwareData = [];
@@ -988,6 +990,14 @@ export default class LeaveManagerDashboard extends LightningElement {
 
     get hasEscalatedTickets() {
         return this.escalatedTickets && this.escalatedTickets.length > 0;
+    }
+
+    get hasSolvedRequests() {
+        return this.solvedRequests && this.solvedRequests.length > 0;
+    }
+
+    get hasSolvedTickets() {
+        return this.solvedTickets && this.solvedTickets.length > 0;
     }
 
     loadEscalatedRequests() {
