@@ -81,8 +81,8 @@ To test the application locally or inside your staging environment, use the virt
 
 | Role | Employee ID | Default Password | Name |
 | :--- | :--- | :--- | :--- |
-| **HR Admin** | `CT50` | `Any@1234` | Remya Nair |
-| **Manager** | `CT01` | `Any@123` | Harish Kumar |
+| **HR Admin** | `CT50` | `Welcome@HR50` | Remya Nair |
+| **Manager** | `CT01` | `Welcome@Manager01` | Harish Kumar |
 | **Employee** | `CT100` | `WELCOME@CRMantra12` | normal Employee |
 | **System Admin (TSA)** | `CT101` | `WELCOME@CRMantra12` | system Admin |
 
