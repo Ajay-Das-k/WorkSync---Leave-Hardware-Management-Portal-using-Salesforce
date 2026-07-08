@@ -228,7 +228,14 @@ public without sharing class PaybookLoginController {
             
             // Send Email with OTP
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            mail.setToAddresses(new String[] {email});
+            mail.setTargetObjectId(emp.Id);
+            mail.setSaveAsActivity(false);
+            
+            List<OrgWideEmailAddress> owaList = [SELECT Id FROM OrgWideEmailAddress WHERE IsVerified = true LIMIT 1];
+            if (!owaList.isEmpty()) {
+                mail.setOrgWideEmailAddressId(owaList[0].Id);
+            }
+            
             mail.setSubject('Your Password Reset OTP');
             mail.setHtmlBody('<p>Dear Employee,</p><p>Your OTP for password reset is: <b>' + otp + '</b></p><p>This OTP will expire in 3 minutes.</p>');
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});
