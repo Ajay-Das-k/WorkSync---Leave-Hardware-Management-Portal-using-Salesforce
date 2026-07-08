@@ -241,6 +241,16 @@ public without sharing class PaybookSignupController {
             Date joiningDateObj = Date.valueOf(joiningDate);
             Date birthdateObj = String.isNotBlank(birthdate) ? Date.valueOf(birthdate) : null;
             
+            // Validate Reporting Manager is not deleted
+            if (String.isNotBlank(managerId)) {
+                List<Contact> managers = [SELECT Id FROM Contact WHERE Id = :managerId LIMIT 1];
+                if (managers.isEmpty()) {
+                    result.success = false;
+                    result.message = 'The selected Reporting Manager is invalid or has been deleted. Please refresh the page or choose an active manager.';
+                    return result;
+                }
+            }
+            
             // Create new Contact record
             Contact newContact = new Contact(
                 FirstName = firstName,

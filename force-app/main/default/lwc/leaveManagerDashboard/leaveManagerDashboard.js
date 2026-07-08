@@ -287,6 +287,9 @@ export default class LeaveManagerDashboard extends LightningElement {
     }
 
     openAddEmployee() {
+        if (this.wiredEmployeesResult) {
+            refreshApex(this.wiredEmployeesResult).catch(err => console.error('Error refreshing employees on open:', err));
+        }
         this.isAddEmployeeOpen = true;
     }
 
