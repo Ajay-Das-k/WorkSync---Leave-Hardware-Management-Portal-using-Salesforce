@@ -427,7 +427,8 @@ public without sharing class PaybookLoginController {
                 // Send Congratulation Email for Position Change
                 if (String.isNotBlank(empDetails.Email)) {
                     Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-                    mail.setToAddresses(new String[] { empDetails.Email });
+                    mail.setTargetObjectId(empDetails.Id);
+                    mail.setSaveAsActivity(false);
                     mail.setSubject('Congratulations on your new Role(s)!');
                     
                     String formattedRoles = String.isNotBlank(newPositions) ? newPositions.replaceAll(';', ', ') : 'No roles assigned';

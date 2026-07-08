@@ -325,7 +325,8 @@ public without sharing class PaybookSignupController {
             // Send welcome email
             try {
                 Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-                mail.setToAddresses(new String[] { email });
+                mail.setTargetObjectId(newContact.Id);
+                mail.setSaveAsActivity(false);
                 mail.setSubject('Welcome to Leave App - Your Account Details');
                 
                 String body = 'Dear ' + firstName + ',\n\n' +
