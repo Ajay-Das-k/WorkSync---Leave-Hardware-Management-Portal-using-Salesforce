@@ -2,7 +2,7 @@ public without sharing class HardwareController {
   // Hardware Inventory Logic
   @AuraEnabled
   public static List<Hardware__c> getHardwareInventory(String callerId) {
-    SecurityMiddleware.verifyAdminOrHR(callerId);
+    SecurityMiddleware.verifyAdminOrHROrManager(callerId);
     try {
       List<Hardware__c> items = [
         SELECT

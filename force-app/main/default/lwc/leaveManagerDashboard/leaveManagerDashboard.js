@@ -1157,7 +1157,7 @@ export default class LeaveManagerDashboard extends LightningElement {
 
     loadHardwareReport() {
         this.hardwareLoading = true;
-        getHardwareInventory()
+        getHardwareInventory({ callerId: this.currentUser ? this.currentUser.contactId : null })
             .then(data => {
                 this.hardwareData = data.map(hw => {
                     let badgeClass = 'slds-badge ';
