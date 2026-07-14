@@ -4,6 +4,11 @@
     <label>Leave App Migration</label>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Company_Policy__c.Content__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Hardware__c.Model__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -545,5 +550,17 @@
         <object>Leave_Request__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Company_Policy__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <classAccesses>
+        <apexClass>CompanyPolicyController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
 </PermissionSet>

@@ -8,7 +8,8 @@ List<String> classNames = new List<String>{
     'PaybookSignupController',
     'LeaveController',
     'HardwareController',
-    'SecurityMiddleware'
+    'SecurityMiddleware',
+    'CompanyPolicyController'
 };
 
 List<ApexClass> classes = [SELECT Id, Name FROM ApexClass WHERE Name IN :classNames];

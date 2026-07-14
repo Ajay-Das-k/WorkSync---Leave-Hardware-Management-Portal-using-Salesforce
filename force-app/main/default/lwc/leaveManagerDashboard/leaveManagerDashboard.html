@@ -121,7 +121,7 @@
   <!-- TABS -->
   <lightning-tabset>
     <lightning-tab
-      label="My Dashboard & Apply Leave"
+      label="My Dashboard"
       value="personal_view"
       icon-name="standard:user"
     >
@@ -129,6 +129,7 @@
         <c-leave-employee-dashboard
           current-user={currentUser}
           hide-header="true"
+          hide-home-and-leaves="true"
         ></c-leave-employee-dashboard>
       </div>
     </lightning-tab>
@@ -1522,6 +1523,16 @@
             </div>
           </lightning-tab>
         </lightning-tabset>
+      </div>
+    </lightning-tab>
+
+    <lightning-tab
+      label="Edit Company Policy"
+      value="company_policy_edit"
+      icon-name="standard:article"
+    >
+      <div class="slds-p-around_medium">
+        <c-company-policy-edit></c-company-policy-edit>
       </div>
     </lightning-tab>
 
