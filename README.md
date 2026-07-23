@@ -50,29 +50,29 @@ sequenceDiagram
     actor Employee
     actor TSA as Tech System Admin (TSA)
     actor HR as HR Admin
-    database DB as Salesforce Database
+    participant DB as Salesforce Database
 
-    Employee->>DB: 1. Raises Issue Ticket against assigned hardware
+    Employee ->> DB: 1. Raises Issue Ticket against assigned hardware
     Note over Employee,DB: Ticket Status: New
-    DB-->>TSA: 2. Ticket appears in TSA Triaging Queue
-    TSA->>DB: 3. Updates Status (e.g. In Progress) & adds remarks
+    DB -->> TSA: 2. Ticket appears in TSA Triaging Queue
+    TSA ->> DB: 3. Updates Status (e.g. In Progress) & adds remarks
     
     alt Local Fix Possible
-        TSA->>DB: 4a. Resolves ticket locally
+        TSA ->> DB: 4a. Resolves ticket locally
         Note over TSA,DB: Ticket Status: Resolved
-        DB-->>Employee: Send email: Ticket Resolved
+        DB -->> Employee: Send email: Ticket Resolved
     else Hardware Replacement Needed
-        TSA->>DB: 4b. Clicks "Convert to Request" action
+        TSA ->> DB: 4b. Clicks "Convert to Request" action
         Note over TSA,DB: Ticket Status: Resolved (Request Created)
-        DB->>DB: 5. System automatically generates a new Hardware Request
+        DB ->> DB: 5. System automatically generates a new Hardware Request
         Note over DB: Request Status: Pending HR Approval
-        DB-->>HR: 6. Request appears in HR Approval Queue
-        HR->>DB: 7. Approves request & allocates device serial number
+        DB -->> HR: 6. Request appears in HR Approval Queue
+        HR ->> DB: 7. Approves request & allocates device serial number
         Note over HR,DB: Request Status: Approved
-        HR->>DB: 8. Clicks "Deliver" upon physical handover
+        HR ->> DB: 8. Clicks "Deliver" upon physical handover
         Note over HR,DB: Request Status: Fulfilled
-        DB->>DB: 9. Updates Employee Assets (deallocates old, assigns new)
-        DB-->>Employee: Send email: Hardware Delivered & Fulfilled
+        DB ->> DB: 9. Updates Employee Assets (deallocates old, assigns new)
+        DB -->> Employee: Send email: Hardware Delivered & Fulfilled
     end
 ```
 
