@@ -160,6 +160,9 @@ To test the application locally or inside your staging environment, use the virt
 | **Employee** | `CT432` | `Sam@NewPassword123` | Sam |
 | **System Admin (TSA)** | `CT101` | `Jack@NewPassword123` | JackSparrow |
 
+> [!CAUTION]
+> Please do not modify or change these active credentials inside the Salesforce database. These passwords are required by the automated UI test suites and verification flows to successfully authenticate and evaluate portal functions.
+
 ---
 
 ## 🛠️ Deploying & Configuring the Project
