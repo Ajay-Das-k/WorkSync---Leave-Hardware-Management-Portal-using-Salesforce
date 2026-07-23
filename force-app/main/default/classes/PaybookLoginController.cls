@@ -68,7 +68,7 @@ public without sharing class PaybookLoginController {
             result.guardianPhone = emp.Guardian_Phone__c;
             result.guardianRelation = emp.Guardian_Relation__c;
             result.bloodGroup = emp.Blood_Group__c;
-            result.profilePictureUrl = emp.Profile_Picture_URL__c;
+            result.profilePictureUrl = formatProfilePictureUrl(emp.Profile_Picture_URL__c);
             
             
             
@@ -128,7 +128,7 @@ public without sharing class PaybookLoginController {
             result.address = emp.Address__c;
             result.guardianName = emp.Guardian_Name__c;
             result.guardianPhone = emp.Guardian_Phone__c;
-            result.profilePictureUrl = emp.Profile_Picture_URL__c;
+            result.profilePictureUrl = formatProfilePictureUrl(emp.Profile_Picture_URL__c);
             result.bloodGroup = emp.Blood_Group__c;
             result.guardianRelation = emp.Guardian_Relation__c;
             
@@ -477,6 +477,20 @@ public without sharing class PaybookLoginController {
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
+    }
+    
+    private static String formatProfilePictureUrl(String picUrl) {
+        if (picUrl == null) {
+            return null;
+        }
+        if (picUrl.startsWith('/sfc/')) {
+            String prefix = System.Site.getPathPrefix();
+            if (prefix == null) {
+                prefix = '';
+            }
+            return prefix + picUrl;
+        }
+        return picUrl;
     }
     
     public class LoginResult {
