@@ -81,10 +81,10 @@ To test the application locally or inside your staging environment, use the virt
 
 | Role | Employee ID | Default Password | Name |
 | :--- | :--- | :--- | :--- |
-| **HR Admin** | `CT50` | `Welcome@HR50` | Remya Nair |
-| **Manager** | `CT01` | `Welcome@Manager01` | Harish Kumar |
-| **Employee** | `CT432` | `WELCOME@ajayCreation12` | normal Employee a |
-| **System Admin (TSA)** | `CT101` | `WELCOME@ajayCreation12` | system Admin |
+| **HR Admin** | `CT50` | `Welcome@HR50` | Aleena Mathews |
+| **Manager** | `CT01` | `Welcome@Manager01` | John Kumar |
+| **Employee** | `CT432` | `WELCOME@ajayCreation12` | Sam |
+| **System Admin (TSA)** | `CT101` | `WELCOME@ajayCreation12` | JackSparrow |
 
 ---
 
