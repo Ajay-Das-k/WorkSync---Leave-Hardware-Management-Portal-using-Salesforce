@@ -85,7 +85,7 @@ public without sharing class HardwareNotificationHandler {
                     body += 'Reason: ' + (req.Description__c != null ? req.Description__c : '') + '\n';
                 }
                 body += '---------------------------------\n\n';
-                body += 'Regards,\nLeave App Ticketing System';
+                body += 'Regards,\nWorkSync Ticketing System';
             } else {
                 // Update: status changed
                 subject = recordTypeLabel + ' Status Updated: ' + req.Name;
@@ -107,7 +107,7 @@ public without sharing class HardwareNotificationHandler {
                     body += 'HR/Manager Comment: ' + req.HR_Manager_Comment__c + '\n';
                 }
                 body += '---------------------------------\n\n';
-                body += 'Regards,\nLeave App Ticketing System';
+                body += 'Regards,\nWorkSync Ticketing System';
             }
             
             mail.setSubject(subject);

@@ -6,8 +6,8 @@
     <communityRoles/>
     <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>true</disableReputationRecordConversations>
-    <emailSenderAddress>ajay.das@crmantra.com</emailSenderAddress>
-    <emailSenderName>Leave_app</emailSenderName>
+    <emailSenderAddress>ajay.das@ajayCreation.com</emailSenderAddress>
+    <emailSenderName>WorkSync</emailSenderName>
     <embeddedLoginEnabled>false</embeddedLoginEnabled>
     <enableApexCDNCaching>true</enableApexCDNCaching>
     <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>

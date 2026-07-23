@@ -292,7 +292,7 @@ public without sharing class PaybookLoginController {
             if (employees.isEmpty()) throw new AuraHandledException('Employee not found.');
             
             Contact emp = employees[0];
-            if (emp.Password_Hash__c != 'WELCOME@CRMantra12') {
+            if (emp.Password_Hash__c != 'WELCOME@ajayCreation12') {
                 throw new AuraHandledException('Password has already been changed from default.');
             }
             

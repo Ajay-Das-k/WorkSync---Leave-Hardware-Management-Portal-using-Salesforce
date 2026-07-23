@@ -257,7 +257,7 @@ public without sharing class PaybookSignupController {
                 LastName = lastName,
                 Email = email,
                 Employee_ID__c = employeeId,
-                Password_Hash__c = 'WELCOME@CRMantra12',
+                Password_Hash__c = 'WELCOME@ajayCreation12',
                 Is_Active__c = true,
                 Portal_Access_Type__c = isHrAdmin ? 'HR Admin' : (isManager ? 'Manager' : 'Employee'),
                 Is_Manager__c = isManager,
@@ -327,7 +327,7 @@ public without sharing class PaybookSignupController {
                 Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
                 mail.setTargetObjectId(newContact.Id);
                 mail.setSaveAsActivity(false);
-                mail.setSubject('Welcome to Leave App - Your Account Details');
+                mail.setSubject('Welcome to WorkSync - Your Account Details');
                 
                 List<OrgWideEmailAddress> owaList = [SELECT Id FROM OrgWideEmailAddress WHERE IsVerified = true LIMIT 1];
                 if (!owaList.isEmpty()) {
@@ -335,13 +335,13 @@ public without sharing class PaybookSignupController {
                 }
                 
                 String body = 'Dear ' + firstName + ',\n\n' +
-                    'Welcome to the Leave Management Application.\n\n' +
+                    'Welcome to WorkSync.\n\n' +
                     'Your employee portal account has been created. Here are your credentials to log in:\n' +
                     'Employee ID: ' + employeeId + '\n' +
-                    'Initial Password: WELCOME@CRMantra12\n\n' +
+                    'Initial Password: WELCOME@ajayCreation12\n\n' +
                     'Please log in using your Employee ID and change your password immediately upon your first login.\n\n' +
                     'Link: https://ajaytesting-dev-ed.develop.my.site.com/vforcesite \n\n' +
-                    'Regards,\nLeave Management Team';
+                    'Regards,\nWorkSync Team';
                     
                 mail.setPlainTextBody(body);
                 Messaging.sendEmail(new List<Messaging.SingleEmailMessage> { mail });

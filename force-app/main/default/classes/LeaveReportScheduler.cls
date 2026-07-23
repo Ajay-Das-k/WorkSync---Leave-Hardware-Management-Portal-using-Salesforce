@@ -71,7 +71,7 @@ public class LeaveReportScheduler implements Schedulable {
         // Recipients: Company Email + Logic for HR/Manager if needed.
         // User asked for "hr and manger mail" and "company mail".
         // We'll send to the company mail and perhaps a distribution list if hardcoded.
-        List<String> toAddresses = new List<String>{'harish.kumar@crmantra.com'};
+        List<String> toAddresses = new List<String>{'harish.kumar@ajayCreation.com'};
         // Add others if configured, e.g. from Custom Setting or Label.
         
         mail.setToAddresses(toAddresses);

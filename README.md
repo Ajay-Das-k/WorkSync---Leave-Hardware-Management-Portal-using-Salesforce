@@ -83,8 +83,8 @@ To test the application locally or inside your staging environment, use the virt
 | :--- | :--- | :--- | :--- |
 | **HR Admin** | `CT50` | `Welcome@HR50` | Remya Nair |
 | **Manager** | `CT01` | `Welcome@Manager01` | Harish Kumar |
-| **Employee** | `CT432` | `WELCOME@CRMantra12` | normal Employee a |
-| **System Admin (TSA)** | `CT101` | `WELCOME@CRMantra12` | system Admin |
+| **Employee** | `CT432` | `WELCOME@ajayCreation12` | normal Employee a |
+| **System Admin (TSA)** | `CT101` | `WELCOME@ajayCreation12` | system Admin |
 
 ---
 
@@ -104,7 +104,7 @@ Because the virtual login page executes within the Experience Cloud **Guest User
    ```powershell
    sf apex run --file "grant_guest_access.apex"
    ```
-2. Alternatively, navigate to **Setup** > **Digital Experiences** > **Pages** > Click **Leave_app** > Open the **Guest User Profile** and add the following classes to **Enabled Apex Class Access**:
+2. Alternatively, navigate to **Setup** > **Digital Experiences** > **Pages** > Click **WorkSync** > Open the **Guest User Profile** and add the following classes to **Enabled Apex Class Access**:
    * `PaybookLoginController`
    * `PaybookSignupController`
    * `LeaveController`

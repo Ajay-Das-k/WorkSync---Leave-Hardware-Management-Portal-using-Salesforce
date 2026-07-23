@@ -108,7 +108,7 @@ export default class PaybookLogin extends LightningElement {
             });
 
             if (result.success) {
-                if (this.password === 'WELCOME@CRMantra12') {
+                if (this.password === 'WELCOME@ajayCreation12') {
                     this.isLoginMode = false;
                     this.isForcePasswordChange = true;
                     this.pendingLoginResult = result;

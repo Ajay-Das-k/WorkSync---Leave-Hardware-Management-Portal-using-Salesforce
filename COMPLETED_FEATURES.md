@@ -1,4 +1,4 @@
-# CRMantra Leave & Hardware Management Application
+# ajayCreation WorkSync & Hardware Management Application
 
 This document lists all features, bug fixes, design enhancements, and technical solutions implemented from the beginning of the project.
 
@@ -10,7 +10,7 @@ This document lists all features, bug fixes, design enhancements, and technical 
 * **Enterprise Split-Screen Layout:** Built a modern two-column layout for the portal login page.
   * **Left Column:** Form field controls featuring inline vector icons, real-time validations, and a clean white color scheme.
   * **Right Column:** Stylized corporate office team picture in the background, overlaid with a premium translucent red gradient cover.
-  * **Brand Identity:** Styled the login pane with the official **CRMantra** company logo imported from a Salesforce static resource.
+  * **Brand Identity:** Styled the login pane with the official **ajayCreation** company logo imported from a Salesforce static resource.
   * **Mockup Visuals:** Added an interactive dot-network network wrapper, pulsing status indicators, and a glowing dashboard card overlay.
 * **Controlled Access / Disabled Self-Registration:** Removed the open "Create an Account" registration links to prevent unauthorized users from self-signing up. Access is now managed exclusively by the HR Admin.
 * **Secure Forgot Password Recovery Flow:** Implemented an OTP request screen supporting Employee ID and verified Email address inputs.
